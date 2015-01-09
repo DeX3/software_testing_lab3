@@ -21,7 +21,6 @@ public class LoginStepDefinitions {
 		sportsId.goToLogin();
 	}
 	
-
 	@Given("^I am logged into the english page")
 	public void I_am_logged_into_the_english_page() throws Throwable {
 		sportsId.goToLogin();
@@ -61,6 +60,11 @@ public class LoginStepDefinitions {
 	@When("^When I enter a correct password$")
 	public void When_I_enter_a_correct_password() throws Throwable {
 	    sportsId.enterPassword( LoginStepDefinitions.CORRECT_PASSWORD );
+	}
+	
+	@Then("^The login should succeed$")
+	public void The_login_should_succeed() throws Throwable {
+	    sportsId.assertWelcomeMessageShown();
 	}
 	
 }

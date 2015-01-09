@@ -49,14 +49,18 @@ public class SportsIDSeleniumHelper {
 	}	
 
 	public void assertUnauthorizedMessageShown() {
-		By l = By.xpath("//span[contains(text(),'Unauthorized')]");
-		WebElement elem = wait.until( ExpectedConditions.visibilityOfElementLocated(l) );
+		WebElement elem = wait.until(
+			ExpectedConditions.visibilityOfElementLocated( By.xpath("//span[contains(text(),'Unauthorized')]") )
+		);
 		Assert.assertNotNull( elem );
 	}
 
 	public void assertWelcomeMessageShown() {
-		Assert.assertTrue( driver.findElement( By.xpath("//h1") ).getText().contains( "Welcome" ) );
 		
+		WebElement elem = wait.until(
+			ExpectedConditions.visibilityOfElementLocated( By.xpath("//h1[contains(text(),'Welcome')]") )	
+		);
+		Assert.assertNotNull( elem );
 	}
 
 	public void selectLanguage(String value) {
