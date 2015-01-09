@@ -7,17 +7,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import at.ac.tuwien.inso.swtesten.util.SeleniumWebDriver;
 import cucumber.api.java.After;
-import cucumber.api.java.Before;
 
 public class SportsIDSeleniumHelper {
 
-	public static final String CORRECT_USERNAME = "gruppe23b";
-	public static final String INCORRECT_PASSWORD = "asdf";
-	
 	private WebDriver driver;
 	private String baseUrl;
 	private WebDriverWait wait;
@@ -31,7 +28,6 @@ public class SportsIDSeleniumHelper {
 	}
 	
 	public void goToLogin() {
-		this.setUp();
 		driver.get( this.baseUrl );
 	}
 	
@@ -56,6 +52,15 @@ public class SportsIDSeleniumHelper {
 		By l = By.xpath("//span[contains(text(),'Unauthorized')]");
 		WebElement elem = wait.until( ExpectedConditions.visibilityOfElementLocated(l) );
 		Assert.assertNotNull( elem );
+	}
+
+	public void assertWelcomeMessageShown() {
+		Assert.assertTrue( driver.findElement( By.xpath("//h1") ).getText().contains( "Welcome" ) );
+		
+	}
+
+	public void selectLanguage(String value) {
+		new Select( driver.findElement(By.id("language")) ).selectByValue( value );
 	}
 
 
