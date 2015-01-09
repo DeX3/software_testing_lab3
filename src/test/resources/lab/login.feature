@@ -30,4 +30,5 @@ When I select english as language
 And When I enter a correct user name
 And When I enter a correct password
 And When I press the login button
+And When I select english as language
 Then The login should succeed
