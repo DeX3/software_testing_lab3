@@ -14,6 +14,8 @@ import at.ac.tuwien.inso.swtesten.util.SeleniumWebDriver;
 import cucumber.api.java.After;
 
 public class SportsIDSeleniumHelper {
+	
+	public static final String NEW_CLUB_NAME = "Springfield Elementary School Karate Club";
 
 	private WebDriver driver;
 	private String baseUrl;
@@ -62,6 +64,24 @@ public class SportsIDSeleniumHelper {
 	public void selectLanguage(String value) {
 		new Select( driver.findElement(By.id("language")) ).selectByValue( value );
 	}
+	
+	public void selectClubs(){
+		driver.findElement(By.linkText("Clubs"));
+	}
+	
+	public void clickAddButton(){
+		driver.findElement(By.id("new-club")).click();;
+	}
+	
+	public void enterGroupName(String name){
+		driver.findElement(By.id("group-name")).sendKeys(name);
+	}
 
+	public void  clickSaveButton(){
+		driver.findElement(By.id("save-club")).click();
+	}
 
+	public void assertGroupShown(String name) {
+		Assert.assertTrue(wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("group-name"))).getText().equals(name));
+	}
 }
