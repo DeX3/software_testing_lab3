@@ -21,7 +21,6 @@ public class LoginStepDefinitions {
 		sportsId.goToLogin();
 	}
 	
-
 	@Given("^I am logged into the english page")
 	public void I_am_logged_into_the_english_page() throws Throwable {
 		sportsId.goToLogin();
@@ -32,6 +31,11 @@ public class LoginStepDefinitions {
 		sportsId.pressLoginButton();
 		sportsId.assertWelcomeMessageShown();
 	}
+	
+	@When("^I select english as language$")
+	public void I_select_english_as_language() throws Throwable {
+		sportsId.selectLanguage( LoginStepDefinitions.LANGUAGE_ENGLISH );
+	}
 
 	@When("^I enter a correct user name$")
 	public void I_enter_a_correct_user_name() throws Throwable {
@@ -41,6 +45,16 @@ public class LoginStepDefinitions {
 	@When("^When I enter an incorrect password$")
 	public void When_I_enter_an_incorrect_password() throws Throwable {
 	    sportsId.enterPassword( LoginStepDefinitions.INCORRECT_PASSWORD );
+	}
+	
+	@When("^When I enter a correct user name$")
+	public void When_I_enter_a_correct_user_name() throws Throwable {
+	    sportsId.enterUserName( LoginStepDefinitions.CORRECT_USERNAME );
+	}
+
+	@When("^When I enter an incorrect user name$")
+	public void When_I_enter_an_incorrect_user_name() throws Throwable {
+	    sportsId.enterUserName( LoginStepDefinitions.INCORRECT_USERNAME );
 	}
 	
 	@When("^When I press the login button$")
@@ -61,6 +75,11 @@ public class LoginStepDefinitions {
 	@When("^When I enter a correct password$")
 	public void When_I_enter_a_correct_password() throws Throwable {
 	    sportsId.enterPassword( LoginStepDefinitions.CORRECT_PASSWORD );
+	}
+	
+	@Then("^The login should succeed$")
+	public void The_login_should_succeed() throws Throwable {
+	    sportsId.assertWelcomeMessageShown();
 	}
 	
 }
