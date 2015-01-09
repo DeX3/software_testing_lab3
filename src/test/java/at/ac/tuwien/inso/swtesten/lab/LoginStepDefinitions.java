@@ -83,4 +83,34 @@ public class LoginStepDefinitions {
 	    sportsId.assertWelcomeMessageShown();
 	}
 	
+	@When("^I have forgotten my password$")
+	public void I_have_forgotten_my_password() throws Throwable {
+	    sportsId.pressForgotPasswordLink();
+	}
+
+	@When("^When I enter an illegal e-Mail address$")
+	public void When_I_enter_an_illegal_e_Mail_address() throws Throwable {
+	    sportsId.enterUserName( "asdf" );
+	}
+
+	@When("^When I press send$")
+	public void When_I_press_send() throws Throwable {
+	    sportsId.pressSend();
+	}
+	
+	@Then("^An error message should be shown$")
+	public void An_error_message_should_be_shown() {
+		sportsId.assertErrorMessageShown();
+	}
+	
+	@When("^When I enter a correct email address$")
+	public void When_I_enter_a_correct_email_address() throws Throwable {
+	    sportsId.enterUserName( "asdf@asdf.at" );
+	}
+
+	@Then("^I should be back at the login page with a success message$")
+	public void I_should_be_back_at_the_login_page_with_a_success_message() throws Throwable {
+	    sportsId.assertSuccessMessageShown();
+	}
+	
 }

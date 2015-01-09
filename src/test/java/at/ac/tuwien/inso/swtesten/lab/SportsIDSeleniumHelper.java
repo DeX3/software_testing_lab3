@@ -86,6 +86,30 @@ public class SportsIDSeleniumHelper {
 		driver.findElement(By.id("save-club")).click();
 	}
 
+	public void pressForgotPasswordLink() {
+		driver.findElement( By.id( "forgot-password") ).click();
+	}
+
+	public void pressSend() {
+		driver.findElement( By.id( "send-reset-email") ).click();
+		
+	}
+
+	public void assertErrorMessageShown() {
+		WebElement elem = wait.until(
+			ExpectedConditions.visibilityOfElementLocated( By.xpath("//li[contains(@class,'error')]") )
+		);
+		Assert.assertNotNull( elem );
+	}
+
+	public void assertSuccessMessageShown() {
+		WebElement elem = wait.until(
+			ExpectedConditions.visibilityOfElementLocated( By.xpath("//li[contains(@class,'success')]") )
+		);
+		Assert.assertNotNull( elem );
+	}
+
+
 	public void assertGroupShown(String name) {
 		wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("group-name"), name));
 		Assert.assertEquals(name,driver.findElement(By.id("group-name")).getText());
