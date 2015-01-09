@@ -4,6 +4,7 @@ Background:
 Given I am logged into the english page
 
 Scenario: Add a Club
+Given I want to manage Clubs
 When I select Clubs
 And When I click the Add Button
 And When I enter a name "Springfield Elementary School Karate Club"

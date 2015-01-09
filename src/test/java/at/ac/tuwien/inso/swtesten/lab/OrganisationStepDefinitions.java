@@ -9,11 +9,10 @@ public class OrganisationStepDefinitions {
 	
 	private SportsIDSeleniumHelper sportsId = new SportsIDSeleniumHelper();
 	
-//	@Given("^I am logged into the english page$")
-//	public void I_am_logged_into_the_english_page() throws Throwable {
-//	    // Express the Regexp above with the code you wish you had
-//	    throw new PendingException();
-//	}
+	@Given("^I want to manage Clubs$")
+	public void I_want_to_manage_Clubs() throws Throwable {
+		sportsId.setUp();
+	}
 
 	@When("^I select Clubs$")
 	public void I_select_Clubs() throws Throwable {

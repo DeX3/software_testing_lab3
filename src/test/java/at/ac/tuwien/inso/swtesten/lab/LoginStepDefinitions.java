@@ -23,6 +23,7 @@ public class LoginStepDefinitions {
 	
 	@Given("^I am logged into the english page")
 	public void I_am_logged_into_the_english_page() throws Throwable {
+		sportsId.setUp();
 		sportsId.goToLogin();
 		sportsId.enterUserName( LoginStepDefinitions.CORRECT_USERNAME );
 		sportsId.enterPassword( LoginStepDefinitions.CORRECT_PASSWORD );
