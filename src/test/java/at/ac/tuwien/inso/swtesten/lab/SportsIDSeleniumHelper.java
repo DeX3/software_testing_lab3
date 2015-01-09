@@ -70,7 +70,8 @@ public class SportsIDSeleniumHelper {
 	}
 	
 	public void selectClubs(){
-		driver.findElement(By.linkText("Clubs"));
+		driver.findElement(By.xpath("//a[@id='nav-structure']")).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Clubs']"))).click();;
 	}
 	
 	public void clickAddButton(){
@@ -86,6 +87,7 @@ public class SportsIDSeleniumHelper {
 	}
 
 	public void assertGroupShown(String name) {
-		Assert.assertTrue(wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("group-name"))).getText().equals(name));
+		wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("group-name"), name));
+		Assert.assertEquals(name,driver.findElement(By.id("group-name")).getText());
 	}
 }
